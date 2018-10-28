@@ -1,0 +1,126 @@
+<app-menuadmin></app-menuadmin>
+<fieldset>
+  <legend><h2>Information</h2></legend>
+    <mat-grid-list cols="2" >
+      <mat-grid-tile>
+
+    <div align="panal1">
+
+      <table mat-table [dataSource]="Staffs"  class="mat-elevation-z8" >
+        <ng-container matColumnDef="staffId">
+          <th mat-header-cell *matHeaderCellDef> Id </th>
+          <td mat-cell *matCellDef="let element"> {{element.staffId}} </td>
+        </ng-container>
+        <ng-container matColumnDef="staffIds">
+          <th mat-header-cell *matHeaderCellDef> Ids </th>
+          <td mat-cell *matCellDef="let element"> {{element.staffIds}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="staffName">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.staffName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="genderName">
+          <th mat-header-cell *matHeaderCellDef> Gender </th>
+          <td mat-cell *matCellDef="let element"> {{element.gender.genderName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="educationName">
+          <th mat-header-cell *matHeaderCellDef> Education </th>
+          <td mat-cell *matCellDef="let element">{{element.education.educationName}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="staffPhone">
+          <th mat-header-cell *matHeaderCellDef> Phone </th>
+          <td mat-cell *matCellDef="let element">{{element.staffPhone}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="jobtypeName">
+          <th mat-header-cell *matHeaderCellDef> Jobtype </th>
+          <td mat-cell *matCellDef="let element">{{element.jobtype.jobtypeName}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="staffSalary">
+          <th mat-header-cell *matHeaderCellDef> Salary </th>
+          <td mat-cell *matCellDef="let element">{{element.staffSalary}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="positionName">
+          <th mat-header-cell *matHeaderCellDef> Position </th>
+          <td mat-cell *matCellDef="let element">{{element.position.positionName}}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+
+      </table>
+
+    </div>
+
+  </mat-grid-tile>
+  <mat-grid-tile>
+
+
+      <div align="panal2">
+        <p>
+          <mat-form-field>
+            <input  placeholder="staffName" matInput [(ngModel)]="staffName" [value]="staffName" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+          &nbsp;
+          <!--Combo box = staffSex-->
+          <mat-form-field class="example-full-width">
+            <mat-select placeholder="Sex" [(ngModel)]="genderName" name="genderName">
+              <mat-option *ngFor="let Gender of Genders" [value]="Gender.genderName">
+                {{Gender.genderName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </p>
+        <p>
+          <!--Combo box = staffEducation-->
+          <mat-form-field class="example-full-width">
+            <mat-select placeholder="Education" [(ngModel)]="educationName" name="educationName">
+              <mat-option *ngFor="let Education of Educations" [value]="Education.educationName">
+                {{Education.educationName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          &nbsp;
+          <!--Combo box = PositionName-->
+          <mat-form-field class="example-full-width">
+            <mat-select placeholder="Position" [(ngModel)]="positionName" name="positionName">
+              <mat-option *ngFor="let Position of Positions" [value]="Position.positionName">
+                {{Position.positionName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          &nbsp;
+          <!--Combo box = staffJobtype-->
+          <mat-form-field class="example-full-width">
+            <mat-select placeholder="Jobtype" [(ngModel)]="jobtypeName" name="jobtypeName">
+              <mat-option *ngFor="let Jobtype of Jobtypes" [value]="Jobtype.jobtypeName">
+                {{Jobtype.jobtypeName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input matInput placeholder="Salary" [(ngModel)]="staffSalary" [value]="staffSalary" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+          &nbsp;
+          <mat-form-field>
+            <input matInput placeholder="Phone" [(ngModel)]="staffPhone" [value]="staffPhone" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        </p>
+        <div align="center">
+        <p>
+          <button mat-raised-button color="warn" (click)="Post()">Add</button>
+
+        </p>
+      </div>
+      </div>
+  </mat-grid-tile>
+</mat-grid-list>
+</fieldset>

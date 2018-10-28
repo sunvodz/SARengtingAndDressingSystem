@@ -1,0 +1,24 @@
+.form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  color: black;
+}
+.full-width{
+  color: black;
+}
+fieldset {
+  /*align="center"*/
+  display: block;
+  margin-left: 250px;
+  margin-right: 250px;
+  /*border: 10px disabled (internal value);*/
+  font-family: 'Cookie', cursive;
+}
+.title_form{
+}
+table {
+  margin-right: 5%;
+  width: 125%;
+  font-size: 20px ;
+}

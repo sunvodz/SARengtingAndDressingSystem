@@ -1,0 +1,105 @@
+<app-menuadmin></app-menuadmin>
+<body bgcolor="#ffc0cb">
+    <div align="center">
+      {{CurrentDate | date}}
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+            <mat-select placeholder="userId" [value]="userData.userId" [(ngModel)]="userData.userId" name="userid">
+            <mat-option *ngFor="let userId of userId" [value]="userId.customerIDs">
+              {{userId.customerIDs}}
+            </mat-option>
+          </mat-select>
+      </mat-form-field>
+      </form>
+      <button mat-raised-button (click)="searchId()" color="warn">Search</button>
+  </div>
+  <fieldset>
+    <legend>Order</legend>
+    <fieldset>
+      <legend>Lease</legend>
+      <div align="center"><p> UserId: {{userData.userId}}</p></div>
+
+  <div class="selected" align="center">
+
+
+    <mat-form-field class="example-full-width">
+        <mat-select placeholder="LeaseId" [value]="leaseData.LeaseId"  [(ngModel)]="leaseData.LeaseId">
+          <mat-option *ngFor="let LeaseName of LeaseName" [value]="LeaseName.leaseId">
+              {{LeaseName.product.productName}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-select placeholder="LeasePrice" [value]="leaseData.LeasePrice" [(ngModel)]="leaseData.LeasePrice" >
+          <mat-option *ngFor="let LeasePrice of LeasePrice" [value]="LeasePrice.product.productPrice">
+              {{LeasePrice.product.productPrice}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+
+  <br>
+        <button mat-stroked-button color="PayL" (click)="payLeaseButtom()">Pay</button>
+  </div>
+
+    </fieldset>
+    <fieldset>
+    <legend>Selling</legend>
+
+    <div class="selected" align="center">
+      <mat-form-field class="example-full-width">
+          <mat-select placeholder="SellingId" [value]="sellingData.SellingId" [(ngModel)]="sellingData.SellingId" >
+            <mat-option *ngFor="let SellingName of SellingName" [value]="SellingName.sellingId">
+                {{SellingName.product.productName}}
+            </mat-option>
+          </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+          <mat-select placeholder="SellingPrice" [value]="sellingData.SellingPrice" [(ngModel)]="sellingData.SellingPrice" >
+            <mat-option *ngFor="let SellingPrice of SellingPrice" [value]="SellingPrice.product.productPrice">
+                {{SellingPrice.product.productPrice}}
+            </mat-option>
+          </mat-select>
+      </mat-form-field>
+
+
+    <br>
+          <button mat-stroked-button color="PayS" (click)="paySellingButtom()">Pay</button>
+    </div>
+
+      </fieldset>
+
+      <fieldset>
+          <legend>Mack up and hair style</legend>
+
+          <div class="selected" align="center">
+            <mat-form-field class="example-full-width">
+                <mat-select placeholder="Bookingid" [value]="bookingData.Bookingid" [(ngModel)]="bookingData.Bookingid">
+                  <mat-option *ngFor="let Bookingid of Bookingid" [value]="Bookingid.bookingId">
+                      {{Bookingid.style.styleName}}
+                  </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-select placeholder="BookingPrice" [value]="bookingData.BookingPrice" [(ngModel)]="bookingData.BookingPrice" >
+                  <mat-option *ngFor="let BookingPrice of BookingPrice" [value]="BookingPrice.style.stylePrice">
+                      {{BookingPrice.style.stylePrice}}
+                  </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+
+          <br>
+                <button mat-stroked-button color="PayB" (click)="payBookingButtom()">Pay</button>
+          </div>
+
+            </fieldset>
+    </fieldset>
+
+
+
+
+  </body>

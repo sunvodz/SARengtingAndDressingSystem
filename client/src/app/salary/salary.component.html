@@ -1,0 +1,107 @@
+<app-menuadmin></app-menuadmin>
+<fieldset>
+  <legend><h2>Salary</h2></legend>
+    <mat-grid-list cols="2" >
+      <mat-grid-tile>
+
+        <div align="panal1">
+
+          <table mat-table [dataSource]="Staffs" matSort class="mat-elevation-z8" >
+
+            <ng-container matColumnDef="staffId">
+              <th mat-header-cell *matHeaderCellDef> staffId </th>
+              <td mat-cell *matCellDef="let element"> {{element.staffId}} </td>
+            </ng-container>
+
+             <ng-container matColumnDef="staffIds">
+               <th mat-header-cell *matHeaderCellDef> staffIds </th>
+               <td mat-cell *matCellDef="let element"> {{element.staffIds}} </td>
+             </ng-container>
+
+            <ng-container matColumnDef="staffName">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.staffName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="staffSalary">
+              <th mat-header-cell *matHeaderCellDef> Salary </th>
+              <td mat-cell *matCellDef="let element">{{element.staffSalary}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="jobtypeName">
+              <th mat-header-cell *matHeaderCellDef> Jobtype </th>
+              <td mat-cell *matCellDef="let element">{{element.jobtype.jobtypeName}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="staffStatus">
+              <th mat-header-cell *matHeaderCellDef> Status </th>
+              <td mat-cell *matCellDef="let element">{{element.staffStatus}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="payerName">
+              <th mat-header-cell *matHeaderCellDef> Payer </th>
+              <td mat-cell *matCellDef="let element">{{element.payer.payerName}}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+
+          </table>
+        </div>
+
+      </mat-grid-tile>
+      <mat-grid-tile>
+
+      <div align="panal1">
+        <p>
+          <mat-form-field>
+            <input matInput placeholder="StaffId"  [(ngModel)]="staffId" [value]="staffId" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+          &nbsp;
+          <mat-form-field>
+            <input matInput placeholder="StaffIds"  [(ngModel)]="staffIds" [value]="staffIds" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+
+        </p>
+
+        <p>
+          <mat-form-field>
+          <input matInput placeholder="Name" [(ngModel)]="staffName" [value]="staffName" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+          &nbsp;
+          <mat-form-field>
+            <input matInput placeholder="Salary" [(ngModel)]="staffSalary" [value]="staffSalary" [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+
+        </p>
+
+
+        <p>
+           <!--Combo box = staffName-->
+          <mat-form-field class="example-full-width">
+            <mat-select placeholder="Jobtype" [(ngModel)]="jobtypeName" name="jobtypeName">
+              <mat-option *ngFor="let Jobtype of Jobtypes" [value]="Jobtype.jobtypeName">
+                {{Jobtype.jobtypeName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          &nbsp;
+          <!--Combo box = PayerName-->
+          <mat-form-field class="example-full-width">
+            <mat-select placeholder="Payer" [(ngModel)]="payerName" name="payerName">
+              <mat-option *ngFor="let Payer of Payers" [value]="Payer.payerName">
+                {{Payer.payerName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </p>
+        <div align="center">
+          <p>
+            <button mat-raised-button color="warn" (click)="save()">Paid</button>
+          </p>
+        </div>
+      </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+</fieldset>
+
